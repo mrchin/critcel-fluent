@@ -31,7 +31,7 @@ DEFINE_PROPERTY(user_water_cp, cell, thread)
 
 /* If the temperature is lower than the reactor inlet, use the boundary specific heat */
 
-  if (temp < 292.8.)
+  if (temp < 292.8)
       cp = 5298.2;
 
 /* If the temperature is higher than the reactor outlet, use the boundary specific heat */

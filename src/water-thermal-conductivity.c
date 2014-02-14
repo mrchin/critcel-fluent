@@ -2,9 +2,10 @@
 /*                                                            */
 /* 15 MPa Water                                               */
 /*                                                            */
-/* User-Defined Functions for temperature-dependent viscosity */
+/* User-Defined Functions for temperature-dependent thermal   */
+/* conductivity                                               */
 /*                                                            */
-/* Units are in Pa-s                                          */
+/* Units are in W/m-K                                         */
 /*                                                            */
 /* FLUENT 14.5.7                                              */
 /*                                                            */
@@ -18,32 +19,32 @@
 #include "udf.h"
 
 
-DEFINE_PROPERTY(user_water_vis, cell, thread)
+DEFINE_PROPERTY(user_water_k, cell, thread)
 
 {
 
-  real temp, mu;
+  real temp, k;
 
   temp = C_T(cell, thread);
 
   {
 
-/* If the temperature is lower than the reactor inlet, use the boundary viscosity */
+/* If the temperature is lower than the reactor inlet, use the boundary thermal conductivity */
 
-  if (temp < 292.8.)
-      mu = 0.000091331;
+  if (temp < 292.8)
+      k = 0.57554;
 
-/* If the temperature is higher than the reactor outlet, use the boundary viscosity */
+/* If the temperature is higher than the reactor outlet, use the boundary thermal conductivity */
 
   else if (temp >= 330.19)
-      mu = 0.000076069;
+      k = 0.49755;
 
 /* NIST developed linearly-parameterized thermal profile for 15 MPa water in temperature range of interest */
 
   else
-      mu = -4E-07*temp + 0.0002;
+      k = -9E-06*pow(temp,2) + 0.0036*temp + 0.3112;
 
   }
-  return mu;
+  return k;
 }
 

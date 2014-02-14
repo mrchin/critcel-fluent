@@ -26,12 +26,13 @@ DEFINE_PROPERTY(user_water_den, cell, thread)
 
   temp = C_T(cell, thread);
 
-  {
+
 
 /* If the temperature is lower than the reactor inlet, use the boundary density */
 
-  if (temp <= 292.8. )
+  if (temp <= 292.8 )
       rho = 740.89;
+
 /* If the temperature is higher than the reactor outlet, use the boundary density */
 
   else if (temp >= 330.19 )
@@ -42,7 +43,6 @@ DEFINE_PROPERTY(user_water_den, cell, thread)
   else
       rho = -0.0155*pow(temp,2) + 7.2415*temp - 53.942;
 
-  }
   return rho;
 }
 
