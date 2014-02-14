@@ -1,0 +1,25 @@
+Generating Code...
+udf_names.c and user_nt.udf files in 2ddp_node are upto date.
+(system "copy "C:\PROGRA~1\ANSYSI~1\v150\fluent"\fluent15.0.0\src\makefile_nt.udf "C:\Users\mchin7\Documents\I2S-LWR\Models\2D-Axial-FH-Pin-v2_files\dp0\FLU\Fluent\libudf\win64\2ddp_node\makefile" ")
+        1 file(s) copied.
+(chdir "C:\Users\mchin7\Documents\I2S-LWR\Models\2D-Axial-FH-Pin-v2_files\dp0\FLU\Fluent\libudf")(chdir "win64\2ddp_node")# Generating ud_io1.h
+apmt-specific-heat.c
+apmt-thermal-conductivity.c
+fuel-centerline-temp.c
+u3si2-specific-heat.c
+u3si2-thermal-conductivity.c
+water-density.c
+..\..\src\water-density.c(33) : error C2059: syntax error : ')'
+..\..\src\water-density.c(37) : error C2181: illegal else without matching if
+water-specific-heat.c
+..\..\src\water-specific-heat.c(34) : error C2059: syntax error : ')'
+..\..\src\water-specific-heat.c(39) : error C2181: illegal else without matching if
+water-thermal-conductivity.c
+..\..\src\water-thermal-conductivity.c(34) : error C2059: syntax error : ')'
+..\..\src\water-thermal-conductivity.c(39) : error C2181: illegal else without matching if
+water-viscosity.c
+..\..\src\water-viscosity.c(33) : error C2059: syntax error : ')'
+..\..\src\water-viscosity.c(38) : error C2181: illegal else without matching if
+Generating Code...
+
+Done.
