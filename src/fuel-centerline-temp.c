@@ -6,7 +6,7 @@
 /*                                                            */
 /* Units are in Kelvin                                        */
 /*                                                            */
-/* FLUENT 14.5.7 version                                      */
+/* FLUENT 15.0                                                */
 /*                                                            */
 /* Author: Michael Chin                                       */
 /*   Date: December 2013                                      */
@@ -26,6 +26,7 @@ DEFINE_PROFILE(temperature_profile, thread, position)
    {
      F_CENTROID(r,f,thread);
      x = r[0];
+	 /* Units from I2S-LWR Property Database are in degrees Celsius (make sure Fluent is adjusted to global degrees Celsius) */
      F_PROFILE(f, thread, position) = 11.305*pow(x,6) - 123.63*pow(x,5) + 479.14*pow(x,4) - 757.26*pow(x,3) + 182.75*pow(x,2) + 754.53*x + 292.05;
    }
    end_f_loop(f, thread)

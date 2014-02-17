@@ -6,7 +6,7 @@
 /*                                                            */
 /* Units are in kg/m3                                         */
 /*                                                            */
-/* FLUENT 14.5.7                                              */
+/* FLUENT 15.0                                                */
 /*                                                            */
 /* Author: Michael Chin                                       */
 /*   Date: December 2013                                      */
@@ -26,7 +26,7 @@ DEFINE_PROPERTY(user_water_den, cell, thread)
 
   temp = C_T(cell, thread);
 
-
+/* Units from I2S-LWR Property Database are in degrees Celsius (make sure Fluent is adjusted to global degrees Celsius) */
 
 /* If the temperature is lower than the reactor inlet, use the boundary density */
 

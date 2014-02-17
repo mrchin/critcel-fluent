@@ -7,7 +7,7 @@
 /*                                                            */
 /* Units are in Pa-s                                          */
 /*                                                            */
-/* FLUENT 14.5.7                                              */
+/* FLUENT 15.0                                                */
 /*                                                            */
 /* Author: Michael Chin                                       */
 /*   Date: December 2013                                      */
@@ -19,32 +19,35 @@
 #include "udf.h"
 
 
-DEFINE_PROPERTY(user_water_cp, cell, thread)
+DEFINE_SPECIFIC_HEAT(user_water_cp, T, Tref, h, yi)
 
 {
 
-  real temp, cp;
-
-  temp = C_T(cell, thread);
+  real cp;
 
   {
 
-/* If the temperature is lower than the reactor inlet, use the boundary specific heat */
+/* Units from I2S-LWR Property Database are in degrees Celsius (make sure Fluent is adjusted to global degrees Celsius) */
 
-  if (temp < 292.8)
+	  /* If the temperature is lower than the reactor inlet, use the boundary specific heat */
+
+  if (T < 292.8)
       cp = 5298.2;
 
 /* If the temperature is higher than the reactor outlet, use the boundary specific heat */
 
-  else if (temp >= 330.19)
+  else if (T >= 330.19)
       cp = 6966.7;
 
 /* NIST developed linearly-parameterized thermal profile for 15 MPa water in temperature range of interest */
 
   else
-      cp = 0.6998*pow(temp,2) - 397.6*temp + 61740;
+      cp = 0.6998*pow(T,2) - 397.6*T + 61740;
 
   }
+
+  *h = cp*(T-Tref);   // Calculate specific heat
+
   return cp;
 }
 

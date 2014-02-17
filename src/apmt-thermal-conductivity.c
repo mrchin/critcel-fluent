@@ -7,7 +7,7 @@
 /*                                                            */
 /* Units are in W/m-K                                         */
 /*                                                            */
-/* FLUENT 14.5.7                                              */
+/* FLUENT 15.0                                                */
 /*                                                            */
 /* Author: Michael Chin                                       */
 /*   Date: December 2013                                      */
@@ -29,9 +29,11 @@ DEFINE_PROPERTY(user_apmt_k, cell, thread)
 
   {
 
+/* Units from I2S-LWR Property Database are in degrees Celsius (make sure Fluent is adjusted to global degrees Celsius) */
+
 /* If the temperature is lower than the reactor inlet, use the boundary thermal conductivity */
 
-  if (temp <= 0.0)
+  if (temp <= 0)
       k = 10.318;
 
 /* If the temperature is higher than the reactor outlet, use the boundary thermal conductivity */
